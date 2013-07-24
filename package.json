@@ -1,20 +1,18 @@
 {
-  "author": "Aaron Heckmann <aaronheckmann+github@gmail.com>",
-  "name": "tryit",
-  "description": "gm resizer on heroku test spin",
+  "author": "Chris Fried",
+  "name": "badger",
+  "description": "science",
   "version": "0.0.1",
-  "private": true,
-  "homepage": "http://aheckmann.github.com/gm/",
   "repository": {
     "type": "git",
-    "url": "git@github.com:aheckmann/gm-demo.git"
+    "url": "git@github.com:chrisfried/badger.git"
   },
   "engines": {
-    "node": "~0.4.7"
+    "node": "0.10.x",
+    "npm": "1.2.x"
   },
   "dependencies": {
       "gm": "1.0.1"
     , "connect": "1.8.4"
-  },
-  "devDependencies": {}
+  }
 }
