@@ -32,10 +32,10 @@ function handler (req, res, next) {
     gm(img)
     .resize(resizeX, resizeY)
     .fill("white")
-    .font("Ubuntu-Bold.ttf", 120)
-    .drawText(-15,-55, loss, "Center")
-    .font("Ubuntu-Regular.ttf", 80)
-    .drawText(5,95, "lbs", "Center");
+    .font("Ubuntu-Bold.ttf", 240)
+    .drawText(-30,-110, loss, "Center")
+    .font("Ubuntu-Regular.ttf", 160)
+    .drawText(10,190, "lbs", "Center");
     
     write(base, res, next);
   };
@@ -53,11 +53,11 @@ function handler (req, res, next) {
     gm(img)
     .resize(resizeX, resizeY)
     .fill("#e6a955")
-    .font("Ubuntu-Bold.ttf", 120)
-    .drawText(0,-27, pushups, "Center")
+    .font("Ubuntu-Bold.ttf", 240)
+    .drawText(0,-50, pushups, "Center")
     .fill("#676767")
-    .font("Ubuntu-Regular.ttf", 30)
-    .drawText(0,-110, "New High Score", "Center");
+    .font("Ubuntu-Regular.ttf", 60)
+    .drawText(0,-220, "New High Score", "Center");
     
     write(base, res, next);}
   
