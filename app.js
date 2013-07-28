@@ -23,8 +23,8 @@ function handler (req, res, next) {
 
     var img = __dirname + '/weight.png';
     
-    var resizeX = 300
-      , resizeY = 300
+    var resizeX = 600
+      , resizeY = 600
     
     var gm = require('gm').subClass({ imageMagick: true });
 
@@ -44,8 +44,8 @@ function handler (req, res, next) {
 
     var img = __dirname + '/pushups.png';
     
-    var resizeX = 300
-      , resizeY = 300
+    var resizeX = 600
+      , resizeY = 600
     
     var gm = require('gm').subClass({ imageMagick: true });
 
