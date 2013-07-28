@@ -15,11 +15,13 @@ function handler (req, res, next) {
   var loss = req.query.loss;
   if ('string' !== typeof loss) loss = '';
   loss = loss.trim();
-  console.log('trying method %s', loss);
+  var pushups = req.query.pushups;
+  if ('string' !== typeof pushups) pushups = '';
+  pushups = pushups.trim();
 
-  var fn = function (req, res, next, loss) {
+  function lossRecord (req, res, next, loss) {
 
-    var img = __dirname + '/base.png';
+    var img = __dirname + '/weight.png';
     
     var resizeX = 300
       , resizeY = 300
@@ -38,6 +40,27 @@ function handler (req, res, next) {
     write(base, res, next);
   };
   
+  function pushupsRecord(req, res, next, pushups) {
+
+    var img = __dirname + '/pushups.png';
+    
+    var resizeX = 300
+      , resizeY = 300
+    
+    var gm = require('gm').subClass({ imageMagick: true });
+
+    var base =
+    gm(img)
+    .resize(resizeX, resizeY)
+    .fill("#e6a955")
+    .font("Ubuntu-Bold.ttf", 120)
+    .drawText(0,-27, pushups, "Center")
+    .fill("#676767")
+    .font("Ubuntu-Regular.ttf", 30)
+    .drawText(0,-110, "New High Score", "Center");
+    
+    write(base, res, next);}
+  
   function write (base, res, next) {
     base.stream('png', function (err, stdout, stderr) {
       if (err) return next(err);
@@ -46,10 +69,12 @@ function handler (req, res, next) {
       stdout.pipe(res);
     });
   }
-  
-  console.log('fn?', !!fn);
 
-  if (!fn) return next();
-
-  fn(req, res, next, loss);
+  if (loss) {
+    lossRecord(req, res, next, loss);
+  } else if (pushups) {
+    pushupsRecord(req, res, next, pushups);
+  } else {
+    return next();
+  }
 }
